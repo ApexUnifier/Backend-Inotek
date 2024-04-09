@@ -18,3 +18,7 @@ export const FORM_RECOGNIZER_ENDPOINT = process.env.FORM_RECOGNIZER_ENDPOINT;
 export const FORM_RECOGNIZER_API_KEY = process.env.FORM_RECOGNIZER_API_KEY;
 export const FORM_RECOGNIZER_CUSTOM_MODEL_ID =
   process.env.FORM_RECOGNIZER_CUSTOM_MODEL_ID;
+export const Access_Token = process.env.ACCESS_TOKEN;
+export const Access_Token_EXPIRY = "7d";
+export const Refresh_Token = process.env.REFRESH_TOKEN;
+export const Refresh_Token_EXPIRY = "1y";

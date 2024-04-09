@@ -34,65 +34,65 @@ const userSchema = new Schema(
 
 //#region Signup
 
-userSchema.statics.signup = async function (name, email, password, phoneNo) {
-  if (!email || !phoneNo || !password) {
-    throw Error("All fields are mandatory");
-  }
+// userSchema.statics.signup = async function (name, email, password, phoneNo) {
+//   if (!email || !phoneNo || !password) {
+//     throw Error("All fields are mandatory");
+//   }
 
-  // Check if the email or phone number already exists
-  const existEmail = await this.findOne({ email });
-  const existPhone = await this.findOne({ phoneNo });
+//   // Check if the email or phone number already exists
+//   const existEmail = await this.findOne({ email });
+//   const existPhone = await this.findOne({ phoneNo });
 
-  // If email or phone number already exists, throw an error
-  if (existEmail) {
-    throw new Error("Email is already in use");
-  }
+//   // If email or phone number already exists, throw an error
+//   if (existEmail) {
+//     throw new Error("Email is already in use");
+//   }
 
-  if (existPhone) {
-    throw new Error("Phone number is already in use");
-  }
+//   if (existPhone) {
+//     throw new Error("Phone number is already in use");
+//   }
 
-  // Hash the password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+//   // Hash the password
+//   const salt = await bcrypt.genSalt(10);
+//   const hashedPassword = await bcrypt.hash(password, salt);
 
-  // Create a new user
-  const newUser = await this.create({
-    name,
-    email,
-    password: hashedPassword,
-    phoneNo,
-  });
+//   // Create a new user
+//   const newUser = await this.create({
+//     name,
+//     email,
+//     password: hashedPassword,
+//     phoneNo,
+//   });
 
-  return newUser;
-};
+//   return newUser;
+// };
 
 //#endregion
 
 //#region Login
 
-userSchema.statics.loginUser = async function (email, password) {
-  if (!password || !email) {
-    throw Error("Email and password are required");
-  }
+// userSchema.statics.loginUser = async function (email, password) {
+//   if (!password || !email) {
+//     throw Error("Email and password are required");
+//   }
 
-  const user = await this.findOne({ email });
+//   const user = await this.findOne({ email });
 
-  if (!user) {
-    throw new Error("No such user exists");
-  }
+//   if (!user) {
+//     throw new Error("No such user exists");
+//   }
 
-  const match = await bcrypt.compare(password, user.password);
+//   const match = await bcrypt.compare(password, user.password);
 
-  if (!match) {
-    throw new Error("Incorrect Password");
-  }
+//   if (!match) {
+//     throw new Error("Incorrect Password");
+//   }
 
-  return user;
-};
+//   return user;
+// };
 
 //#endregion
 
 const User = mongoose.model("User", userSchema);
 
-export { User };
+export default User;
