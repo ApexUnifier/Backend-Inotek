@@ -35,7 +35,7 @@ const verifyRefreshToken = (token) => {
   }
 };
 
-const jwt = {
+const jwtHelper = {
   signAccessToken,
   verifyAccessToken,
   signRefreshToken,
