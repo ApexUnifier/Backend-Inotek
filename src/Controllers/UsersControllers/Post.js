@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
-import { UserSchema } from "../../Models";
-import { Jwt } from "../../Helpers";
+import schemas from "../../Models/index.js";
+import { Jwt } from "../../Helpers/index.js";
+
+const { UserSchema } = schemas;
 
 // Signup
 export const signup = async (req, res) => {
