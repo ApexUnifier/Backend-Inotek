@@ -123,3 +123,46 @@ export const filterUsers = async (req, res) => {
     });
   }
 };
+
+// Update User
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, password, phoneNo, about, skills, ratingScore } =
+      req.body;
+
+    // Check if the user exists
+    const user = await UserSchema.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Hash the new password if it is provided
+    const hashedPassword = password
+      ? await bcrypt.hash(password, 10)
+      : user.password;
+
+    // Update the user
+    const updatedUser = await UserSchema.findByIdAndUpdate(
+      id,
+      {
+        name: name || user.name,
+        email: email || user.email,
+        password: hashedPassword,
+        phoneNo: phoneNo || user.phoneNo,
+        about: about || user.about,
+        skills: skills || user.skills,
+        ratingScore: ratingScore || user.ratingScore,
+      },
+      { new: true }
+    );
+
+    res
+      .status(200)
+      .json({ message: "User updated successfully", user: updatedUser });
+  } catch (error) {
+    console.error("Error in updating user:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
