@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-const { VacancySchema } = Schema;
+import schemas from "../../Models/index.js";
+const { VacancySchema } = schemas;
 
 export const getAllVacancies = async (req, res) => {
   try {
