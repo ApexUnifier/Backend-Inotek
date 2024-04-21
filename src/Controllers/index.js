@@ -1,4 +1,5 @@
 import { login, signup } from "./UsersControllers/Post.js";
+import companiesController from "./CompaniesControllers/Post.js";
 import {
   getAllVacancies,
   getAllVacanciesForCompany,
@@ -17,3 +18,4 @@ export const vacancyController = {
   createVacancy,
   deleteVacancy,
 };
+export { companiesController };
