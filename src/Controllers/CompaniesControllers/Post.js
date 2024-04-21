@@ -47,14 +47,12 @@ export const signup = async (req, res) => {
 
     const access_Token = Jwt.signAccessToken(payload);
 
-    const returnData = {
-      name: newUser.companyName,
+    res.status(201).json({
+      message: "User signup successfully",
+      user: payload,
       access_Token,
-    };
-
-    res
-      .status(201)
-      .json({ message: "User signup successfully", user: returnData });
+      accountType: "company",
+    });
   } catch (error) {
     console.error("Error in signup:", error);
     res.status(500).json({ error: "Server error" });
@@ -86,7 +84,12 @@ export const login = async (req, res) => {
     };
     const access_Token = Jwt.signAccessToken(payload);
 
-    res.status(200).json({ message: "Login successful", access_Token });
+    res.status(200).json({
+      message: "Login successful",
+      access_Token,
+      user: payload,
+      accountType: "company",
+    });
   } catch (error) {
     console.error("Error in login:", error);
     res.status(500).json({ error: "Server error" });

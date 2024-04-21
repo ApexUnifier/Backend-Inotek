@@ -12,7 +12,12 @@
     - Example Response:
       ```json
       {
-        "message": "Login successful",
+        "message": "User signup successfully",
+        "user": {
+          "_id": "<comapany_id>",
+          "name": "<company_name>"
+        },
+        "accountType": "company",
         "access_Token": "<access_token>"
       }
       ```
@@ -56,9 +61,11 @@
       {
         "message": "User signup successfully",
         "user": {
-          "name": "<company_name>",
-          "access_Token": "<access_token>"
-        }
+          "_id": "<comapany_id>",
+          "name": "<company_name>"
+        },
+        "accountType": "company",
+        "access_Token": "<access_token>"
       }
       ```
   - 400 Bad Request: If a user with the same email already exists, the response will include an error message "Company already exists".
