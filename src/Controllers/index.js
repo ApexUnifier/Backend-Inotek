@@ -4,6 +4,7 @@ import {
   filterUsers,
   updateUser,
 } from "./UsersControllers/Post.js";
+import { getUserById } from "./UsersControllers/Get.js";
 import companiesController from "./CompaniesControllers/Post.js";
 import {
   getAllVacancies,
@@ -21,6 +22,7 @@ export const usersController = {
   signup,
   filterUsers,
   updateUser,
+  getUserById,
 };
 export const vacancyController = {
   getAllVacancies,
