@@ -14,4 +14,6 @@ router.get("/:id", vacancyController.getVacancyById);
 
 router.get("/company/:companyId", vacancyController.getAllVacanciesForCompany);
 
+router.post("/filter", vacancyController.filterVacancies);
+
 export default router;

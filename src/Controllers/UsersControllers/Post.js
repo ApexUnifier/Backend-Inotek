@@ -94,3 +94,32 @@ export const verifyToken = async (token) => {
     return null;
   }
 };
+
+// Implement the POST method in the controller
+export const filterUsers = async (req, res) => {
+  try {
+    const { skills } = req.body;
+
+    // Build the filter object based on the provided query parameters
+    const filter = {};
+
+    if (skills) {
+      filter.skills = skills;
+    }
+
+    // Query the vacancies collection with the filter object
+    const users = await UserSchema.find(filter);
+
+    res.status(200).json({
+      success: true,
+      message: "users filtered successfully",
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to filter users",
+      error: error.message,
+    });
+  }
+};

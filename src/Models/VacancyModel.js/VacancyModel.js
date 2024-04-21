@@ -54,11 +54,15 @@ const VacancySchema = new Schema(
       enum: ["open", "closed"],
       default: "open",
     },
+    jobType: {
+      type: String,
+      enum: ["Internship", "parttime", "fulltime"],
+      default: "Internship",
+    },
     numberOfVacanciesAvailable: {
       type: Number,
       required: [true, "Number of vacancies available is required"],
     },
-    // You can add more fields as needed
   },
   { timestamps: true }
 );
