@@ -11,6 +11,9 @@ const companySchema = new Schema(
       required: true,
       unique: true,
     },
+    logo: {
+      type: String,
+    },
     email: {
       type: String,
       required: true,
