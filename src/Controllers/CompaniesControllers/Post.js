@@ -8,7 +8,7 @@ const { CompanySchema } = schemas;
 export const signup = async (req, res) => {
   try {
     const {
-      companyName,
+      name,
       email,
       password,
       yearOfEstablishment,
@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
     // Create a new user
     const newUser = new CompanySchema({
       _id: new mongoose.Types.ObjectId(),
-      companyName,
+      name,
       email,
       yearOfEstablishment,
       fieldsOfWork,
@@ -42,7 +42,7 @@ export const signup = async (req, res) => {
 
     const payload = {
       _id: newUser._id,
-      name: newUser.companyName,
+      name: newUser.name,
     };
 
     const access_Token = Jwt.signAccessToken(payload);
@@ -80,7 +80,7 @@ export const login = async (req, res) => {
     // Generate JWT token
     const payload = {
       _id: user._id,
-      name: user.companyName,
+      name: user.name,
     };
     const access_Token = Jwt.signAccessToken(payload);
 
