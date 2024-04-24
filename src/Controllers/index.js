@@ -3,6 +3,7 @@ import {
   signup,
   filterUsers,
   updateUser,
+  filterUsersByRating,
 } from "./UsersControllers/Post.js";
 import { getUserById } from "./UsersControllers/Get.js";
 import companiesController from "./CompaniesControllers/Post.js";
@@ -23,6 +24,7 @@ export const usersController = {
   filterUsers,
   updateUser,
   getUserById,
+  filterUsersByRating,
 };
 export const vacancyController = {
   getAllVacancies,

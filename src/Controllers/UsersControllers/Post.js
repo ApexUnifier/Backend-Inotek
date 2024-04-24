@@ -166,3 +166,31 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+export const filterUsersByRating = async (req, res) => {
+  try {
+    const { ratingScore } = req.body;
+
+    // Build the filter object based on the provided query parameters
+    const filter = {};
+
+    if (ratingScore) {
+      filter.ratingScore = { $gt: ratingScore };
+    }
+
+    // Query the users collection with the filter object
+    const users = await UserSchema.find(filter);
+
+    res.status(200).json({
+      success: true,
+      message: "users filtered successfully",
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to filter users",
+      error: error.message,
+    });
+  }
+};

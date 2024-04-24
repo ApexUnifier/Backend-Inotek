@@ -10,6 +10,8 @@ import { fileURLToPath } from "url";
 import { PORT } from "./ENV.js";
 import "./src/Helpers/MongoDB/index.js";
 import path from "path";
+import { updateLogo } from "./src/Controllers/CompaniesControllers/Get.js";
+import { log } from "console";
 
 //#endregion
 
@@ -68,3 +70,6 @@ app.use(function (err, req, res, next) {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// const result = await updateLogo();
+// console.log(result);
