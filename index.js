@@ -48,9 +48,9 @@ app.use("/api/*", (req, res, next) => {
   next(err);
 });
 
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // Error handling middleware for other errors
 app.use(function (err, req, res, next) {

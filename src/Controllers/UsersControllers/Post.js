@@ -40,6 +40,7 @@ export const signup = async (req, res) => {
     const access_Token = Jwt.signAccessToken(payload);
 
     const returnData = {
+      _id: newUser._id,
       name: newUser.name,
       id:newUser._id,
       access_Token,
@@ -79,7 +80,13 @@ export const login = async (req, res) => {
     };
     const access_Token = Jwt.signAccessToken(payload);
 
-    res.status(200).json({ message: "Login successful", access_Token });
+    const returnData = {
+      _id: user._id,
+      name: user.name,
+      access_Token,
+    };
+
+    res.status(200).json({ message: "Login successful", user: returnData });
   } catch (error) {
     console.error("Error in login:", error);
     res.status(500).json({ error: "Server error" });
