@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import schemas from "../../Models/index.js";
 import { Jwt } from "../../Helpers/index.js";
+import mongoose from "mongoose";
 
 const { UserSchema } = schemas;
 
@@ -40,6 +41,7 @@ export const signup = async (req, res) => {
 
     const returnData = {
       name: newUser.name,
+      id:newUser._id,
       access_Token,
     };
 
