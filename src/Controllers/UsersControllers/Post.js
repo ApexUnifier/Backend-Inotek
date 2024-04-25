@@ -42,7 +42,6 @@ export const signup = async (req, res) => {
     const returnData = {
       _id: newUser._id,
       name: newUser.name,
-      id:newUser._id,
       access_Token,
     };
 
