@@ -81,6 +81,7 @@ export const login = async (req, res) => {
 
     const returnData = {
       _id: user._id,
+      id:user._id,
       name: user.name,
       access_Token,
     };
@@ -183,7 +184,7 @@ export const filterUsersByRating = async (req, res) => {
     const filter = {};
 
     if (ratingScore) {
-      filter.ratingScore = { $gt: ratingScore };
+      filter.ratingScore = { $gte: ratingScore };
     }
 
     // Query the users collection with the filter object
